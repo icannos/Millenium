@@ -58,3 +58,15 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 (@ENTRY,@SOURCETYPE,3,0,61,0,100,0,10858,1,0,0,72,0,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Gossip Select - Close Gossip"),
 (@ENTRY,@SOURCETYPE,4,0,62,0,100,0,10858,0,0,0,80,3666900,0,0,0,0,0,1,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Gossip Select - Run Script"),
 (@ENTRY,@SOURCETYPE,5,3,62,0,100,0,10858,2,0,0,11,69672,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Gossip Select 2 - Cast Sunreaver Disguise");
+
+
+
+
+-- Spawn http://www.wowhead.com/npc=21496/dertrok
+
+DELETE FROM creature where id = 21496;
+INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `isActive`) VALUES (144482, 21496, 530, 1, 1, 0, 0, 2163.37, 4771.83, 156.477, 5.59925, 300, 0, 0, 5341, 0, 0, 0, 0, 0, 0);
+
+-- Spawn http://fr.wowhead.com/npc=10081/ame-en-peine-poudreuse
+
+REPLACE INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `isActive`) VALUES (123900, 10081, 209, 1, 1, 0, 0, 1627.47, 1186.85, 8.87693, 0.647954, 7200, 15, 0, 5757, 0, 1, 0, 0, 0, 1);
