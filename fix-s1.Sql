@@ -33,3 +33,22 @@ INSERT INTO `event_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, 
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=15 AND `SourceGroup`=8687 AND `ConditionTypeOrReference`=29;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
 (15, 8687, 0, 0, 0, 29, 0, 21838, 200, 0, 1, 0, 0, '', 'Only show gossip if no terokk nearby');
+
+
+
+
+-- http://www.wowhead.com/quest=20439/a-meeting-with-the-magister
+
+-- Arcanist Tybalin
+SET @ENTRY := 36669;
+SET @SOURCETYPE := 0;
+
+DELETE FROM `smart_scripts` WHERE `entryorguid`=@ENTRY AND `source_type`=@SOURCETYPE;
+UPDATE creature_template SET AIName="SmartAI" WHERE entry=@ENTRY LIMIT 1;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES 
+(@ENTRY,@SOURCETYPE,0,0,19,0,100,0,20439,0,0,0,11,69672,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Quest Accept - Cast Sunreaver Disguise"),
+(@ENTRY,@SOURCETYPE,1,0,20,0,100,0,20439,0,0,0,28,70973,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Quest Reward - Remove Aura Sunreaver Disguise"),
+(@ENTRY,@SOURCETYPE,2,3,62,0,100,0,10858,1,0,0,11,69672,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Quest Accept - Cast Sunreaver Disguise"),
+(@ENTRY,@SOURCETYPE,3,0,61,0,100,0,10858,1,0,0,72,0,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Gossip Select - Close Gossip"),
+(@ENTRY,@SOURCETYPE,4,0,62,0,100,0,10858,0,0,0,80,3666900,0,0,0,0,0,1,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Gossip Select - Run Script"),
+(@ENTRY,@SOURCETYPE,5,3,62,0,100,0,10858,2,0,0,11,69672,0,0,0,0,0,7,0,0,0,0.0,0.0,0.0,0.0,"Arcanist Tybalin - On Gossip Select 2 - Cast Sunreaver Disguise");
