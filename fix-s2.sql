@@ -1,3 +1,13 @@
+
+--> Squire Cavin
+	-- Squire Cavin SAI
+SET @ENTRY := 33522;
+UPDATE `creature_template` SET `AIName`="SmartAI" WHERE `entry`=@ENTRY;
+DELETE FROM `smart_scripts` WHERE `entryorguid`=@ENTRY AND `source_type`=0;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(@ENTRY,0,0,0,62,0,100,0,10383,0,0,0,12,33785,6,0,0,0,0,7,0,0,0,0,0,0,0,"Squire Cavin - On Gossip Option 0 Selected - Summon Creature 'The Black Knight'");
+
+
 --> Spawn Fondeboue:
 REPLACE INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `isActive`) VALUES (162774, 10323, 1, 1, 1, 0, 28, 4994.85, 550.339, 4.93405, 3.45171, 300, 0, 0, 516, 0, 0, 0, 0, 0, 0);
 
